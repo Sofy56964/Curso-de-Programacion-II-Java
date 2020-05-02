@@ -1,0 +1,14 @@
+		if(existe!=0){
+			System.out.println("\nIngrese el valor que reemplazara al numero buscado: ");
+			val = leer.nextInt();
+			for(i=0; i<tam; i++){    //for que recorre el arreglo
+				array.set(i,val);      //modifica el elemento encontrado en su posicion correspondiente con el valor que digite el usuario
+				System.out.print(array);   //imprime el arreglo con el reemplazo del valor buscado
+			}
+		}
+
+
+System.out.println("\nIngrese el valor que reemplazara al numero buscado: ");
+				val = leer.nextInt();
+				array.set(i,val);      //modifica el elemento encontrado en su posicion correspondiente con el valor que digite el usuario
+				System.out.print(array);   //imprime el arreglo con el reemplazo del valor buscado

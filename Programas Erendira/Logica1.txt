@@ -1,0 +1,40 @@
+//Universidad Autonoma del Estado de Mexico
+//Sofia Omara Guerrero Angeles
+//Logica ejercicio 1
+
+import java.util.Scanner;
+public class Logica1{
+	
+	public static void main(String[] args){
+	
+		Scanner leer = new Scanner(System.in);      //permite la entrada de datos del teclado
+		StringBuffer sb = new StringBuffer();     //objeto que permite utilizar los metodos de un bufer de cadena (el cual es como un String, pero se puede modificar. En cualquier momento contiene una secuencia particular de caracteres, pero la longitud y el contenido de la secuencia se pueden cambiar a través de ciertas llamadas a métodos)
+		String cadena;   //variable que guarda la cadena que el usuario ingrese
+		int ascii;    //variable para convertir en codigo Ascii la cadena de caracteres ingresada por el usuario, es de tipo entero por que la conversion en Ascii es entero
+		int i;	
+	
+		System.out.println("\nIngrese la cadena: ");
+		cadena = leer.nextLine();     //almacena dentro de la variable "cadena" lo que ingrese el usuario 
+	
+		System.out.println("\nCadena ingresada: "+cadena);    //muestra la cadena que ingreso el usuario
+		
+		//Conversion de String a codigo Ascii
+		System.out.println("Cadena en Ascii: ");		
+		for(i=0; i<cadena.length(); i++){       //for que recorre la cadena de caracteres ingresada por el usuario, se usa .length() debido a que no se conoce el numero exacto de caracteres que ingreso (se colocan () a .length ya que no es un arreglo)
+			ascii = cadena.charAt(i);     //la variable "ascii" convierte la cadena de caracteres ingresada por el usuario en cod.Ascii; el metodo charAt devuelve el valor char en el indice especificado (si se encuantra la letra A en la posicion 0, devuelve A), en este caso, devolvera los caracteres posicion por posicion de la cadena que ingreso el usuario (por eso se usa el iterador)
+			System.out.print(" "+ascii);    //imprime los numeros equivalentes al codigo Ascii de la cadena ingresada, muestra la conversion de cada letra en codigo Ascii
+		}
+		System.out.println();    //salto de linea
+
+		//Conversion de String a Hexadecimal
+		char carac[] = cadena.toCharArray();    //se convierte la cadena de caracteres ingresado por el usuario en una matriz de caracteres (toCharArray() convierte esta cadena en una nueva matriz de caracteres)
+		for(i=0; i<carac.length; i++){     //recorre el contenido de la matriz de caracteres (en este caso se utiliza el .length sin () porque se trata de un arreglo)
+			String hexadec = Integer.toHexString(carac[i]);     //convierte cada caracter de la matriz de caracteres en un entero y lo pasa como parametro al metodo toHexString() de la clase Integer (el metodo toHexString, Devuelve una representación de cadena del argumento entero como un entero sin signo en la base 16)
+			sb.append(hexadec);    //agrega los valores resultantes al objeto StringBuffer utilizando el metodo append() de la clase StringBuffer (append() Agrega la representación de cadena del argumento)
+		}
+		String resultado = sb.toString();     //convierte el objeto StringBuffer en una cadena usando el metodo toString() de la clase StringBuffer (toString Devuelve una cadena que representa los datos en esta secuencia)
+		System.out.println("\nCadena en Hexadecimal: "+ resultado+" ");    //muestra la cadena ingresada por el usuario en forma hexadecimal separadas por un espacio		
+		System.out.println();    //salto de linea 
+
+	}
+}

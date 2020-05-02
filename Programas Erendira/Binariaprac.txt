@@ -1,0 +1,87 @@
+//Sofia Omara Guerrero Angeles
+//Busqueda Binaria (practica propuesta)
+
+import java.util.Scanner; 
+import java.util.Arrays;    //libreria que permite el uso del Array.sort para ordenar el arreglo ascendentemente
+import java.util.Collections;    //libreria que permite el uso de reverseOrder() para ordenar el arreglo descendentemente 
+public class Binariaprac{
+		
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		int tam = 0;     //tamaño del arreglo
+		int num = 0;     //numero que se buscara
+		int aux = 0;     //aux para agregar datos al arreglo, nos permitira llenar el arreglo con numeros aleatorios
+		int i, x, y, a, b;
+
+		//Pedimos el tamaño del Arreglo
+		System.out.println("\nIngrese el tamaño del arreglo: ");
+		tam = leer.nextInt();
+		
+		Integer[] array = new Integer[tam];     //creacion del arreglo con el tamaño que digite el usuario, se coloca Integer porque la funcion Collections no es soportada en el uso de arreglos (arrays)
+
+		//pedimos el intervalo de los numeros aleatorios al usuario
+		System.out.println("\nIngrese el valor MINIMO del intervalo que desea: ");
+		y = leer.nextInt();
+		System.out.println("Ingrese el valor MAXIMO del intervalo que desea: ");
+		x = leer.nextInt();
+
+		//Generamos los numeros aleatorios en el intervalo que digite el usuario y los agregamos al arreglo
+		System.out.println("\nLos elementos del arreglo son: ");
+		for(i=0; i<tam; i++){    //for que recorre el arreglo
+			aux = (int)(Math.random()*(x-y+1)+y);    //es otra forma de llenar el arreglo con random, se coloca int al inicio por que random devuelve valores reales (double); (x-y+1)+y es la formula para obtener un numero entre dos numeros culquiera (permite determinar el intervalo)
+			array[i] = aux;    //el arreglo toma los valores de aux (numeros aleatorios de x-y, intervalo seleccionado por el usuario) 
+			System.out.print(" "+array[i]);     //muestra el arreglo lleno, separados los valores por un espaci
+		}
+		System.out.println();    //salto de linea
+
+		//Ordenamos el arreglo ascendentemente (MENOR-MAYOR) haciendo uso del Array.sort
+		System.out.println("\nLos elementos del Array ORDENADOS ASCENDENTEMENTE son: ");
+		Arrays.sort(array);    //Arrays.sort permite ordenar de manera automatica el arreglo ascendentemente y recibe como parametro el array
+		for(i=0; i<tam; i++){     //recorre el arreglo ya ordenado ascendentemente 
+			System.out.print(" "+array[i]);    //muestra el arreglo ya ordenado ascendentemente, separados los elementos por un espacio 
+		}
+
+		//Ordenamos el arreglo de manera descendente (MAYOR-MENOR), haciendo uso del Arrays.sort y reverseOrder()
+		System.out.println("\nLos elementos del arreglo ORDENADO DESCENDENTEMENTE son: ");
+		Arrays.sort(array, Collections.reverseOrder());      //Arrays.sort ordena ascendentemente el arreglo, Collections.reverseOrder() permite invertir u ordenar el arreglo de manera descendente, es decir, esta linea permite mostrar el arreglo ordenado de mayor a menor
+		for(i=0; i<tam; i++){     //for que recorre el arreglo
+			System.out.print(" "+array[i]);    //muestra el arreglo ya ordenado descendentemente, separados los elementos por un espacio 	
+		}
+
+		//Pedimos los numeros que se desea buscar
+		System.out.println("\nIngrese el PRIMER numero que desea buscar: ");
+		a = leer.nextInt();
+		System.out.println("\nIngrese el SEGUNDO numero que desea buscar: ");
+		b = leer.nextInt();
+
+		//Implementamos la Busqueda binaria
+		//Recibe como parametro el arreglo y el numero a buscar (array, num)
+		/*
+		En caso de encontrar el numero nos devolvera un valor entero (positivo, mayor o igual a 0), con el numero
+		con la posicion que ocupa dentro del array el numero buscado, si NO se encuentra
+		dentro del array, devolvera un numero negativo (menor a 0)
+		*/        
+                //original: int position = Arrays.binarySearch(array, num);               se usa Collections reversOrder se usa para indicar que la busqueda se hara de manera descendente (mayor a menor), de lo contrario generaria un error, ya que la busqueda binaria se lleva a cabo cuando los elementos estan ordenados ascendentemente (menor a mayor)										
+		int posi1 = Arrays.binarySearch(array, a, Collections.reverseOrder());    //metodo que recibe como parametros el arreglo ordenado(array) y el numero que se buscara(a); este metodo sirve para realizar la busqueda automaticamente, binarySearch devuelve la 1era ocurrencia del elemento a buscar. 
+		int posi2 = Arrays.binarySearch(array, b, Collections.reverseOrder());    //metodo que recibe como parametros el arreglo ordenado(array) y el numero que se buscara(b); este metodo sirve para realizar la busqueda automaticamente, binarySearch devuelve la 1era ocurrencia del elemento a buscar
+		
+		//Verificamos el resultado de la busqueda binaria
+		//Primer numero
+		if(posi1>=0){     //si el 1er numero a buscar se encuentra en el arreglo, regresa un valor positivo mayor o igual a 0; es decir, si se encuentra el numero, la posicion retorna un numero mayor o igual que 0
+			System.out.println("\nNumero 1: "+a+" Econtrado en la posicion: "+(posi1+1));    //muestra en pantalla el numero que se busco (a) y la posicion en la que se encuentra (posi1+1)
+		}
+		else{
+			System.out.println("\nNO se encontro el PRIMER numero ");
+		}
+	
+		//Segundo numero
+		if(posi2>=0){    //si el 2er numero a buscar se encuentra en el arreglo, regresa un valor positivo mayor o igual a 0; es decir, si se encuentra el numero, la posicion retorna un numero mayor o igual que 0    
+			System.out.println("\nNumero 2: "+b+" Econtrado en la posicion: "+(posi2+1));    //muestra en pantalla el numero que se busco (b) y la posicion en la que se encuentra (posi2+1)
+		}
+		else{
+			System.out.println("\nNO se encontro el SEGUNDO numero ");
+		}		
+
+	}
+}

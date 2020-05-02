@@ -1,0 +1,62 @@
+//Sofia Omara Guerrero Angeles
+//Ordenamiento de Insercion
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Insercion{
+
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		Random r = new Random();
+
+		int tam, i, j, aux;
+
+		System.out.println("\nORDENAMIENTO POR INSERCION :) ");
+		
+		System.out.println("\nIngrese el tamaño del arreglo: ");
+		tam = leer.nextInt();
+		
+		int[] array = new int[tam];     //creacion del arreglo con el tamaño que digite el usuario
+
+		for(i=0; i<tam; i++){
+			array[i] = r.nextInt(100);     //el arreglo se llena con numeros aleatorios hasta 100
+		}
+		
+		System.out.println("\nEl arreglo es: ");
+		for(i=0; i<tam; i++){
+			System.out.print(" "+array[i]);    //muestra el arreglo posicion por posicion, separados los valores por un espacio 
+		}
+		System.out.println();     //salto de linea
+
+
+		//Algoritmo de Ordenamiento por Insercion
+		for(i=0; i<tam; i++){
+			j = i;      //j representa la posicion(flecha), la cual equivale al valor del bucle en el que vamos
+			aux = array[i];     //es el numero del arreglo que se va comprobando
+
+							           //(j>0) nos dice que como no se puede comprobar la 1era posicion o la posicion 0, entonces debe ser mayor a cero para que no pierda tiempo haciendo esta comporbacion ya que no hay nada
+			while( (j>0) && (array[j-1] > aux) ){     //(array[j-1] > aux) nos dice que si el valor a la izquierda es mayor que el numero actual, entonces hara el intercambio
+				array[j] = array[j-1];		 //el numero actual es igual al numero que estaba en la izquierda, por lo que aqui se realiza el intercambio
+				j--;                            //comprueba con los demas numeros que hay en la izquierda hasta que llega en la posicion 1, ya que en la posicion 0 ya no hay ningun numero a la izquierda
+			}
+			array[j] = aux;    //se almacenan los valores ya ordenados
+		}
+
+				
+		System.out.println("\nEl arreglo ordenado de forma ASCEDENTE es: ");
+		for(i=0; i<tam; i++){
+			System.out.print(" "+array[i]);    //imprime el arreglo ordenado de menor a mayor
+		}
+		System.out.println();    //salto de linea
+
+
+		System.out.println("\nEl arreglo ordenado de forma DESCENDENTE es: ");
+		for(i=tam-1; i>=0; i--){
+			System.out.print(" "+array[i]);    //imprime el arreglo ordenado de mayor a menor
+		}
+		System.out.println();    //salto de linea			
+
+	}
+}

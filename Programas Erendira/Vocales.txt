@@ -1,0 +1,61 @@
+//Programacion II
+//Sofia Omara Guerrero Angeles
+//Logica ejercicio 3
+
+import java.util.Scanner;
+public class Vocales{
+	
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		String palabra;     //variable que almacena la cadena de caracteres
+		int des;     //variable que permite la ejecucion del programa las veces que el usuario desee
+
+		do{                 //se colocan los contadores dentro del bucle do{} while{}, de lo contrario, el conteo es erroneo
+			int A=0;    //contador de las vocales a
+			int E=0;    //contador de las vocales e
+			int I=0;    //contador de las vocales i
+			int O=0;    //contador de las vocales o
+			int U=0;    //contador de las vocales u
+
+			System.out.println("\nIngrese la cadena de caracteres: "); 
+			palabra = leer.nextLine();
+	
+			palabra = palabra.toLowerCase();   //.toLowerCase convierte todos los caracteres de este String a minusculas, esto se realiza para que no de un resultado erroneo el programa
+
+			char pal[] = palabra.toCharArray();        //se convierte la cadena de caracteres ingresado por el usuario en un arreglo de caracteres (toCharArray() convierte esta cadena en una nueva matriz de caracteres)
+	
+			for(int i=0; i<pal.length; i++){      //recorre el contenido del arreglo de caracteres ascendentemente (en este caso se utiliza el .length sin () porque se trata de un arreglo)
+				if(pal[i]=='a'){     //si el caracter en la posicion i es la vocal a
+					A++;     //contador de a aumenta en 1
+				}
+				if(pal[i]=='e'){   //si el caracter en la posicion i es la vocal e
+					E++;      //contador de e aumenta en 1
+				}
+				if(pal[i]=='i'){    //si el caracter en la posicion i es la vocal i
+					I++;      //contador de i aumenta en 1
+				}
+				if(pal[i]=='o'){    //si el caracter en la posicion i es la vocal o
+					O++;     //contador de o aumenta en 1
+				}
+				if(pal[i]=='u'){     //si el caracter en la posicion i es la vocal u
+					U++;     //contador de u aumenta en 1
+				}
+			}
+
+			//muestra conteo de vocales
+			System.out.println("\nEl numero de vocales en la cadena de caracteres es: ");
+			System.out.println("a: "+A);   //muestra la letra a y el numero que hay en la cadena de caracteres de esta vocal
+			System.out.println("e: "+E);   //muestra la letra e y el numero que hay en la cadena de caracteres de esta vocal
+			System.out.println("i: "+I);   //muestra la letra i y el numero que hay en la cadena de caracteres de esta vocal
+			System.out.println("o: "+O);   //muestra la letra o y el numero que hay en la cadena de caracteres de esta vocal
+			System.out.println("u: "+U);   //muestra la letra u y el numero que hay en la cadena de caracteres de esta vocal
+	
+			//Pregunta al usuario si desea ejecutar nuevamente
+			System.out.println("\n¿Desea agregar mas Cadenas de caracteres?  (Si=1/No=2)");
+			des = leer.nextInt();
+			leer.nextLine();    //para que no de por hecho que el usuario ha escrito algo y no se brinque esta variable (se usa en este caso al momento de ingresar la cadena de caracteres, de lo contrario muestra los resultados previos)
+		}while(des==1);    //se va a repetir si la desicion es si
+
+	}
+}

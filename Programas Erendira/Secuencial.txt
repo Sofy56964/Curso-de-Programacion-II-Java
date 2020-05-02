@@ -1,0 +1,50 @@
+//Sofia Omara Guerrero Angeles
+//Busqueda Secuencial (ejercicio guiado)
+
+import java.util.Scanner;
+public class Secuencial{
+
+	public static void main (String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		
+		int tam = 0;     //tamaño del arreglo
+		int num = 0;     //numero a buscar
+		int aux = 0;     //aux permite agregar datos al array, es decir, ayudara a llenar el arreglo con numeros aleatorios
+		int existe = 0;   //variable que verifica si el numero fue encontrado, es decir, si el elemento esta en el arreglo
+	
+		//pedimos el tamaño del arreglo
+		System.out.println("\nIngrese el tamaño del arreglo: ");
+		tam = leer.nextInt();
+	
+		int[] array = new int[tam];     //creacion del arreglo con el tamaño que digite el usuario
+
+		//Generamos los numeros aleatorios y los agregamos al arreglo
+		System.out.println("\nLos elementos del arreglo son: ");
+		for(int x=0; x<tam; x++){      //for que recorre el arreglo para llenar cada posicion con numeros aleatorios
+			aux = (int)(Math.random()*(100-1+1)+1);     //es otra forma de llenar el arreglo con random, se coloca int al inicio por que random devuelve valores reales (double), se utilizan esos numeros, ya que el rango es de 1-100, de lo contrario, generaria aleatorios de 0-100
+			array[x] = aux;    //el arreglo toma los valores de aux (numeros aleatorios de 1-100)
+			System.out.print(" "+array[x]);    //muestra el arreglo lleno, separados los valores por un espacio
+		}
+		System.out.println();   //salto de linea 
+		
+		//pedimos el numero que se va a buscar
+		System.out.println("\nIngrese el Numero que desea buscar: ");
+		num = leer.nextInt();
+
+		//Algoritmo de Busqueda Secuencial
+		//Realizamos el recorrido del arreglo en busca del numero
+		for(int x=0; x<array.length; x++){    //for que recorre el arreglo
+			if(array[x] == num){      //si el elemento en la posicion x es igual al numero que se desea buscar
+				//si existe lo mostraremos en pantalla
+				System.out.print("\nNumero: "+array[x]+ " Encontrado en la posicion: "+(x+1));   //muestra el numero que se encontro en el arreglo (por eso se usa array[x]) y muestra la posicion en la que se encuentra (se utiliza x+1, por que el iterador inicia en 0, entonces como el usuario no esta acostumbrado a ver las posiciones comenzando por 0, se le suma 1, ejemp: posicion=1, muestra 2)
+				existe+=1;    //contador que aumenta si el numero fue encontrado (ya no vale 0), y mostrara las veces que se encuantra el numero, ejem: si el numero es encontrado 3 veces, el mensaje que se muestra en pantalla (numero: x, posicion; y) sera visualizado 3 veces
+			}
+		}
+		if(existe == 0){    //como "existe" fue inicializado en 0, si no cambia ese valor, es decir, que permanezca en 0, quiere decir que el elemento no se encuentra en el arreglo
+			System.out.println("\nNumero NO encontrado" );
+		}
+		System.out.println();    //salto de linea
+
+	}
+}

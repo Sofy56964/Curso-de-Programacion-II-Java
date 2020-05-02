@@ -1,0 +1,6 @@
+Programa de diagnostico, aplicacion aula
+
+Desconozco el uso de variables booleanas y como usarlas en un contador 
+Los contadores no son inicializados.
+¿Como declaro condicionales donde me indique si la clase puede ser o no abierta? dependiendo si cumple con el minimo porcentaje de alumnos (30%) y si el profesor esta disponible
+¿Como muestro en pantalla el numero de alumnos reprobados y los que estan inscritos en la clase, asi como los alumnos que no asistiran por las actividades extra?

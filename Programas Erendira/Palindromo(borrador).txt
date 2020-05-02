@@ -1,0 +1,40 @@
+//Programacion II
+//Sofia Omara Guerrero Angeles
+//Logica ejercicio 2
+
+import java.util.Scanner;
+public class Palindromo{
+
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		String palabra;
+		int cont=0;   //contador que nos permite identificar si se trata de un palindromo o no
+
+		System.out.println("\nIngrese la cadena de caracteres: ");
+		palabra = leer.nextLine();
+
+		palabra = palabra.toUpperCase();   //.toUpperCase convierte todos los caracteres de este String a mayusculas, esto se realiza para que no de un resultado erroneo el programa
+
+		char carac[] = palabra.toCharArray();        //se convierte la cadena de caracteres ingresado por el usuario en un arreglo de caracteres (toCharArray() convierte esta cadena en una nueva matriz de caracteres)
+		int i = 0;     //variable inicializada en la primera posicion (toma el valor del primer caracter del arreglo)
+		int j = carac.length-1;     //variable inicializada en la ultima posicion (toma el valor de ultimo caracter del arreglo y como no se sabe el tamaño exacto de este, se usa .length)
+	
+		while(i<j){     //se considera izq<der, ya que ira comparando los caracteres del lado izquierdo con los derecho (similar al ordenamiento quicksort)
+			if(carac[i] == carac[j]){     //si los caracteres (evaluados posicion por posicion) del arreglo son iguales de la palabra ingresada, entonces es un palindromo
+				cont ++;    //en caso de que no sea un palindromo, el valor del contador incrementara en 1 
+				i++;    //como se comenzo en la primera posicion, se debe incrementar para evaluar el resto del arreglo
+				j--;    //se inicializo en el ultimo elemento del arreglo, por lo que se debe decrementar para comparar el resto del arreglo
+			}
+		}
+		
+		if(cont==0){      //si NO se trata de un palindromo, el valor del contador permanece intacto
+			System.out.println("\nLa cadena de caracteres NO UN PALINDROMO "); 
+		}
+		else{     //si el valor del contador es diferente de 0, NO es un palindromo
+			System.out.println("\nLa cadena de caracteres ES UN PALINDROMO ");
+		}
+		
+
+	}
+}

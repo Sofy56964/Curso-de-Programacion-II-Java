@@ -1,0 +1,30 @@
+//Programacion II
+//Sofia Omara Guerrero Angeles
+//Logica ejercicio 2
+
+import java.util.Scanner;
+public class Palindromo{
+
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		String palabra;
+		char inv;
+		int cont=0;   //contador que nos permite identificar si se trata de un palindromo o no
+
+		System.out.println("\nIngrese la cadena de caracteres: ");
+		palabra = leer.nextLine();
+
+		palabra = palabra.toUpperCase();   //.toUpperCase convierte todos los caracteres de este String a mayusculas, esto se realiza para que no de un resultado erroneo el programa
+
+		//char carac[] = palabra.toCharArray();        //se convierte la cadena de caracteres ingresado por el usuario en un arreglo de caracteres (toCharArray() convierte esta cadena en una nueva matriz de caracteres)
+	
+		for(int i=palabra.length()-1; i>=0; i--)     //recorre el contenido del arreglo de caracteres al reves (en este caso se utiliza el .length () porque NO se trata de un arreglo y se le resta uno porque comenzara en la ultima posicion)
+			inv = palabra.charAt(i);     //charAt devuelve el valor en la posicion especificada, en este caso os caracteres del arreglo al reves (de la ultima posicion a la 1era); y la variable inv toma esos valores
+			if(palabra.equals(inv))   //equals compara esta cadena con el objeto especifico (devuelve verdadero si son iguales)
+				System.out.println("\nLa cadena de caracteres ES UN PALINDROMO "); 
+			else     //si el valor del contador es diferente de 0, NO es un palindromo
+			System.out.println("\nLa cadena de caracteres NO ES UN PALINDROMO ");	
+
+	}
+}

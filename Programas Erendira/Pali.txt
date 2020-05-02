@@ -1,0 +1,40 @@
+//Programacion II
+//Sofia Omara Guerrero Angeles
+//Logica ejercicio 2
+
+import java.util.Scanner;
+public class Pali{
+
+	public static void main(String[] args){
+
+		Scanner leer = new Scanner(System.in);
+		String palabra;
+
+		System.out.println("\nIngrese la cadena de caracteres: ");
+		palabra = leer.nextLine();
+
+		palabra = palabra.toUpperCase();   //.toUpperCase convierte todos los caracteres de este String a mayusculas, esto se realiza para que no de un resultado erroneo el programa
+
+		String pal = palabra.replaceAll("\\s", "");      //elimina todos los espacios de la cadena de caracteres
+		boolean bol=true;    //variable booleana que permitira identificar si se trata de un palindromo o no
+
+		//recorrer la palabra sin espacios y en mayusculas
+		for(int i=0; i<pal.length(); i++){     //for que recorre la cadena de caracteres desde su primera posicion
+			for(int j=pal.length()-1; j>=0; j--){      //for que recorre la cadena de caracteres desde la ultima posicion
+				if(pal.charAt(i) == pal.charAt(j)){    //charAt devuelve el valor char en el indice especificado(letra en las posiciones i y j), charAt no se puede utilizar si la cadena de caracteres es convertida a un arreglo 
+					bol = true;			//si los caracteres de la posicion i(analizados desde la primera posicion e incrementando (izquierda)) son iguales a los caracteres de la posicion j(analizados desde la ultima posicion y decrementando(derecha))
+				}					//entonces bol es verdadero, por que son iguales los caracteres y se trata de un palindromo
+				else{		//en caso de que un solo caracter sea diferente 
+					bol = false;        //bol es falso, ya que con un caracteres que NO sea igual, ya no es un palindromo
+				}
+			}
+		}
+		if(bol){	//si bol es verdadero, se trata de un palindromo
+			System.out.println("\nES un palindromo ");
+		}
+		else{        //si bol es falso, NO es un palindromo
+			System.out.println("\nNO es un palindromo ");
+		}
+		
+	}
+}

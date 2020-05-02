@@ -1,0 +1,72 @@
+//Sofia Omara Guerrero Angeles
+//Calculadora
+
+import java.util.Scanner;
+public class Calculadora{
+    public static void main(String[] args){
+        
+        int opc;
+        float n1, n2, suma, resta, mult, div;
+        Scanner leer = new Scanner(System.in);
+        
+        do{
+                
+            System.out.println();  //salto de linea
+            System.out.println("Elija una opcion: ");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Multiplicacion");
+            System.out.println("4. Division");
+            System.out.println("5. Salir");
+            opc = leer.nextInt();
+            switch(opc){
+                case 1:
+                    System.out.println("\nIngrese el primer numero: ");
+                    n1 = leer.nextFloat();
+                    System.out.println("Ingrese el segundo numero: ");
+                    n2 = leer.nextFloat();
+                    System.out.println();  //salto de linea
+                    suma = n1+n2;
+                    System.out.println("\nLa SUMA de los numeros es: "+suma);
+                    break;
+        
+                case 2:
+                    System.out.println("\nIngrese el primer numero: ");
+                    n1 = leer.nextFloat();
+                    System.out.println("Ingrese el segundo numero: ");
+                    n2 = leer.nextFloat();
+                    System.out.println();  //salto de linea
+                    resta = n1-n2;
+                    System.out.println("\nLa RESTA de los numeros es: "+resta);
+                    break;
+
+                case 3:
+                    System.out.println("\nIngrese el primer numero: ");
+                    n1 = leer.nextFloat();
+                    System.out.println("Ingrese el segundo numero: ");
+                    n2 = leer.nextFloat();
+                    System.out.println();  //salto de linea
+                    mult = n1*n2;
+                    System.out.println("\nLa MULTIPLICACION de los numeros es: "+mult);
+                    break;
+    
+                case 4: 
+                    System.out.println("\nIngrese el primer numero: ");
+                    n1 = leer.nextFloat();
+                    System.out.println("Ingrese el segundo numero: ");
+                    n2 = leer.nextFloat();
+                    System.out.println();  //salto de linea
+                    div = n1/n2;
+                    System.out.println("\nLa DIVISON de los numeros es: "+div);
+                    break;
+
+                case 5:
+                    System.out.println("\nHasta pronto...");
+                    System.exit(0);   //sale del switch
+                    break;
+            }
+        
+        }while(opc!=5);
+
+    }
+}

@@ -1,0 +1,72 @@
+//Sofia Omara Guerrero Angeles 
+//Busqueda Secuencial (Ejercicio practico)
+
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Busquedasecuencial{
+	
+	public static void main(String[] args){
+		
+		Scanner leer = new Scanner(System.in);
+
+		int x, y, i;     //permiten determinar el rango de los numeros aleatorios
+		int tam, num, aux, val;    
+		int existe = 0;   //variable que verifica si el numero fue encontrado, es decir, si el elemento esta en el arreglo
+
+		ArrayList <Integer> array = new ArrayList <Integer>();  //Creacion de ArrayList vacio de tipo entero(se coloca integer por que los arraylist trabajan con obj, int!=obj)
+		ArrayList <Integer> pos = new ArrayList <Integer>();  //Creacion de ArrayList vacio de tipo entero, este ArrayList nos permitira almacenar las posiciones(indices) del numero (si se encuentra) a buscar(se coloca integer por que los arraylist trabajan con obj, int!=obj)
+	
+		//pedimos el tamaño del ArrayList 
+		System.out.println("\nIngrese el tamaño del arreglo: ");
+		tam = leer.nextInt();
+
+		//pedimos el intervalo de los numeros aleatorios al usuario
+		System.out.println("\nIngrese el valor MINIMO del intervalo que desea: ");
+		y = leer.nextInt();
+		System.out.println("Ingrese el valor MAXIMO del intervalo que desea: ");
+		x = leer.nextInt();
+
+		//Generamos los numeros aleatorios y los agregamos al ArrayList
+		System.out.println("\nLos elementos del arreglo son: ");
+		for(i=0; i<tam; i++){    //for que recorre el arreglo
+			aux = (int)(Math.random()*(x-y+1)+y);    //es otra forma de llenar el arreglo con random, se coloca int al inicio por que random devuelve valores reales (double); (x-y+1)+y es la formula para obtener un numero entre dos numeros culquiera (permite determinar el intervalo)
+			array.add(aux);   //la funcion add rellena el arreglo vacio con numeros aleatorios en el intervalo especificado
+			System.out.print(" "+array.get(i));  //muestra el arreglo lleno, get devuelve el elemento en la posicion especificada, en este caso el iterador
+		}
+
+		System.out.println();   //salto de linea 
+		//pedimos el numero que se va a buscar
+		System.out.println("\nIngrese el Numero que desea buscar: ");
+		num = leer.nextInt();
+
+		//Algoritmo de Busqueda Secuencial
+		//Realizamos el recorrido del arreglo en busca del numero
+		for(i=0; i<tam; i++){    //for que recorre el arreglo
+			if(array.get(i) == num){      //si el elemento en la posicion x es igual al numero que se desea buscar
+				//si existe lo mostraremos en pantalla
+				System.out.print("\nNumero: "+array.get(i)+" Encontrado en la posicion: "+(i+1));   //muestra el numero que se encontro en el arreglo (por eso se usa array.get(i)) y muestra la posicion en la que se encuentra (se utiliza i+1, por que el iterador inicia en 0, entonces como el usuario no esta acostumbrado a ver las posiciones comenzando por 0, se le suma 1, ejemp: posicion=1, muestra 2)
+				pos.add(i);    //se guarda la poscion (indice) del numero del arraylist (array) donde fue encontrado el numero
+				existe+=1;    //contador que aumenta si el numero fue encontrado (ya no vale 0), y mostrara las veces que se encuantra el numero, ejem: si el numero es encontrado 3 veces, el mensaje que se muestra en pantalla (numero: x, posicion; y) sera visualizado 3 veces
+			}
+		}
+		System.out.println();    //salto de linea
+
+		if(existe!=0){    //si el elemento es encontrado, entonces el contador "existe" es diferente de 0
+			System.out.println("\nIngrese el valor que reemplazara al numero buscado: ");
+			val = leer.nextInt();
+			//Se cambia el numero (reemplazo)
+			for(int j=0; j<pos.size(); j++){    //for que recorre el arreglo que almacena las posiciones del elemento encontrado, size() devuelve el numero de elementos en la lista (en este caso, el numero de las posiciones del elemento encontrado)
+				array.set(pos.get(j), val);      //modifica el elemento encontrado en su posicion correspondiente con el valor que digite el usuario (metodo set), utilizando el Arraylist donde se almacenaron las posiciones del numero encontrado (por eso se utiliza el pos.get(j), el cual contiene y devuelve las posiciones del elemento encontrado, es decir, en las posiciones del valor encontrado, se cambiaran por el numero que digite el usuario)
+			}					
+			System.out.print(array);   //imprime el arreglo con el reemplazo del valor buscado
+		}
+
+		if(existe == 0){    //como "existe" fue inicializado en 0, si no cambia ese valor, es decir, que permanezca en 0, quiere decir que el elemento no se encuentra en el arreglo
+			System.out.println("\nNumero NO encontrado" );
+		}		
+		System.out.println();    //salto de linea
+
+	}
+}
+
+	
